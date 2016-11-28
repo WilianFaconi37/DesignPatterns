@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DesignPatterns Observer/Adapter</string>
+    <string name="title_activity_tela_alarme">Alarme</string>
+</resources>
