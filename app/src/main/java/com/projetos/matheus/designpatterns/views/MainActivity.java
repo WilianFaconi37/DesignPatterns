@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.projetos.matheus.designpatterns.R;
 import java.util.Date;
+import java.util.List;
+
 import models.designpatterns.Alarm;
 import models.designpatterns.Despertator;
 import models.observers.TimerObserver;
@@ -21,13 +23,14 @@ import models.observers.TimerObserver;
 public class MainActivity extends AppCompatActivity implements TimerObserver{
 
     Despertator despertador;
+    Alarm alarm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //List<Alarm> alarms = ();
 
 
 
@@ -48,12 +51,31 @@ public class MainActivity extends AppCompatActivity implements TimerObserver{
             }
         });
 
-        ListView listView = (ListView) findViewById(R.id.lvAlarms);
-        ArrayAdapter<Alarm> alarmAdapter = new ArrayAdapter<Alarm>(this,android.R.layout.simple_list_item_1,Despertator.getInstance() );
-        listView.setAdapter(alarmAdapter);
+        lista();
+        //métodos
+        //   ArrayAdapter<Alarm> alarmAdapter = new ArrayAdapter<Alarm>(this,android.R.layout.simple_list_item_1,Despertator.getInstance() );
+        //listView.setAdapter(alarmAdapter);
+    }
+
+
+    public void lista(){
+        int i;
+
+        for(i=0; i<2; i++){
+
+            ListView listaHorario = (ListView) findViewById(R.id.lista);
+
+            ArrayAdapter<Alarm> adapter = new ArrayAdapter<Alarm>(this,
+                android.R.layout.simple_list_item_1,Despertator.getInstance().getAlarms());
+           listaHorario.setAdapter(adapter);
+
+        }
 
 
     }
+
+
+
 
 
     @Override
